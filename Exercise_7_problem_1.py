@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
-
-# ## Problem 1: Simple scatter plot using random 
+ 
+# ## Problem 1:Simple scatter plot using random 
 # 
 # We can generate random numbers using using a method `random.rand()` from the [NumPy package](https://numpy.org/). This example generates 10 random values:
 # 
@@ -19,7 +19,13 @@ import numpy as np
 import pandas as pd
 
 # YOUR CODE HERE 1 to set data
+import mtplotlib.pyplot as plt
+random_numbers1=np.random.rand(1000)
+random_numbers2=np.random.rand(1000)
 
+data=pd.DataFrame({'x':random_numbers1,'y':random_numbers2})
+data['x']=random_numbers1
+data['y']=random_numbers2
 # Check your random values
 print(data.head())
 
@@ -31,7 +37,7 @@ assert len(data) == 1000, "There should be 1000 rows of data."
 # 
 
 # YOUR CODE HERE 2 to set colors
-
+colors=np.random.rand(1000)
 # This test print should print out 10 first numbers in the variable colors
 print(colors[0:10])
 
@@ -52,14 +58,22 @@ assert len(colors) == 1000, "There should be 1000 random numbers for colors"
 
 # Plot a scatter plot
 # YOUR CODE HERE 3
-
+data.plot(kind='scatter',x='x',y='y',s=50,c=colors,colormap='prism',edgecolor='black')
 # Add labels and title
 # YOUR CODE HERE 4
+title='MY random candy points'
+xlabel='X-label'
+ylabel='Y-label'
+plt.title(title)
+plt.xlabel(xlabel)
+plt.ylabel(ylabel)
 
 # Save the plot as a png file:
 outputfp = "my_first_plot.png"
 
 # YOUR CODE HERE 5
+plt.savefig('my_first_plot.png')
+
 
 # This test print statement should print the output filename of your figure
 print("Saved my first plot as:", outputfp)
